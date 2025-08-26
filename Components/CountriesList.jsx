@@ -2,16 +2,18 @@
 import { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import CountryListShimmer from "./CountryListShimmer.jsx";
+import data from "../data.json";
 
 function CountriesContainer({ query }) {
   const [CountriesData, setCountriesData] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountriesData(data);
-      });
+    // fetch("https://restcountries.com/v3.1/")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    setCountriesData(data);
+    // })
+    // .catch((error) => console.log(error.message));
   }, []);
 
   return CountriesData.length === 0 ? (
