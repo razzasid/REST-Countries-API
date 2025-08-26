@@ -16,14 +16,17 @@ function CountriesContainer({ query }) {
     // .catch((error) => console.log(error.message));
   }, []);
 
+  // Normalize query: trim and lowercase
+  const normalizedQuery = query.trim().toLowerCase();
+
   return CountriesData.length === 0 ? (
     <CountryListShimmer />
   ) : (
     <div className="countries-container">
       {CountriesData.filter(
         (country) =>
-          country.name.common.toLowerCase().includes(query) ||
-          country.region.toLowerCase().includes(query)
+          country.name.common.toLowerCase().includes(normalizedQuery) ||
+          country.region.toLowerCase().includes(normalizedQuery)
       ).map((country) => (
         <CountryCard
           key={country.name.common}
